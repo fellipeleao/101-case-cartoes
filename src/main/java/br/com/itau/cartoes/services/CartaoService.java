@@ -1,5 +1,7 @@
 package br.com.itau.cartoes.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,13 +38,19 @@ public class CartaoService {
 	    	throw new CartaoNumberFormatException();
 	    }
 	    
-	    Cartao cartao = cartaoRepository.findByNumero(numero);
-	    cartao.setAtivo(cartaoPar.isAtivo());
+	    Optional<Cartao> cartao = cartaoRepository.findByNumero(numero);
 	    
-	    return cartaoRepository.save(cartao);
+        if(!cartao.isPresent())
+        {
+        	throw new CartaoNotFoundException();
+        }
+        
+	    cartao.get().setAtivo(cartaoPar.isAtivo());
+	    
+	    return cartaoRepository.save(cartao.get());
 	}
 	
-	public Cartao consultaCartao(String numero)
+	public Cartao consultaCartaoPorNumero(String numero)
 	{
 	    // Verifica número do cartao
 	    try {
@@ -51,16 +59,26 @@ public class CartaoService {
 	    	throw new CartaoNumberFormatException();
 	    }
 	    
-	    Cartao cartao = cartaoRepository.findByNumero(numero);
+	    Optional<Cartao> cartao = cartaoRepository.findByNumero(numero);
 	    
-        if(cartao != null)
+        if(!cartao.isPresent())
         {
-                return cartao;
+        	throw new CartaoNotFoundException();
         }
-        else
+        
+        return cartao.get();
+	}
+	
+	public Cartao consultaCartaoPorId(int id)
+	{
+	    Optional<Cartao> cartao = cartaoRepository.findById(id);
+	    
+        if(!cartao.isPresent())
         {
-        		throw new CartaoNotFoundException();
+        	throw new CartaoNotFoundException();
         }
+        
+        return cartao.get();
 	}
 	
 }
