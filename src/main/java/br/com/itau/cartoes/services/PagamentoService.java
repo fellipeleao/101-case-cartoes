@@ -13,6 +13,9 @@ public class PagamentoService
 	@Autowired
 	PagamentoRepository pagamentoRepository;
 	
+	@Autowired
+	CartaoService cartaoService;
+	
 	public Pagamento salvaPagamento(Pagamento pagamento)
 	{
 		return pagamentoRepository.save(pagamento);
