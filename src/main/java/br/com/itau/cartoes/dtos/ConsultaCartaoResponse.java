@@ -1,12 +1,10 @@
 package br.com.itau.cartoes.dtos;
 
-import br.com.itau.cartoes.models.Cliente;
-
 public class ConsultaCartaoResponse 
 {
 	private int id;
 	private String numero;
-	private Cliente cliente;
+	private int clienteId;
 
 	public int getId() {
 		return id;
@@ -20,10 +18,10 @@ public class ConsultaCartaoResponse
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public int getClienteId() {
+		return clienteId;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setClienteId(int clienteId) {
+		this.clienteId = clienteId;
 	}
 }

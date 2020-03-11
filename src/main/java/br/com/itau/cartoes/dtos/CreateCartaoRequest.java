@@ -8,7 +8,7 @@ public class CreateCartaoRequest
 	@NotBlank
 	private String numero;
 	
-	private Cliente cliente;
+	private int clienteId;
 
 	public String getNumero() {
 		return numero;
@@ -18,11 +18,11 @@ public class CreateCartaoRequest
 		this.numero = numero;
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public int getClienteId() {
+		return clienteId;
 	}
 
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setClienteId(int clienteId) {
+		this.clienteId = clienteId;
 	}
 }

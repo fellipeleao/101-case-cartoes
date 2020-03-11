@@ -1,12 +1,10 @@
 package br.com.itau.cartoes.dtos;
 
-import br.com.itau.cartoes.models.Cliente;
-
 public class CreateCartaoResponse 
 {
 	private int id;
 	private String numero;
-	private Cliente cliente;
+	private int clienteId;
 	private boolean ativo = false;
 
 	public int getId() {
@@ -27,10 +25,10 @@ public class CreateCartaoResponse
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public int getClienteId() {
+		return clienteId;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setClienteId(int clienteId) {
+		this.clienteId = clienteId;
 	}
 }

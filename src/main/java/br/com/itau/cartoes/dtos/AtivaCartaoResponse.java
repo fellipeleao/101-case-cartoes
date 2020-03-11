@@ -6,7 +6,7 @@ public class AtivaCartaoResponse
 {
 	private int id;
 	private String numero;
-	private Cliente cliente;
+	private int clienteId;
 	private boolean ativo;
 
 	public int getId() {
@@ -27,10 +27,10 @@ public class AtivaCartaoResponse
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	public Cliente getCliente() {
-		return cliente;
+	public int getClienteId() {
+		return clienteId;
 	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
+	public void setClienteId(int clienteId) {
+		this.clienteId = clienteId;
 	}
 }

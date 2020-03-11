@@ -1,18 +1,25 @@
 package br.com.itau.cartoes.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table
 public class Pagamento 
 {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private int cartaoId;
+	
+	@Column
 	private String descricao;
+	
+	@Column
 	private double valor;
 
 	public int getId() {

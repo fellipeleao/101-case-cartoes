@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.itau.cartoes.exceptions.CartaoNotFoundException;
 import br.com.itau.cartoes.exceptions.CartaoNumberFormatException;
 import br.com.itau.cartoes.models.Cartao;
+import br.com.itau.cartoes.models.Cliente;
 import br.com.itau.cartoes.repositories.CartaoRepository;
 
 @Service
@@ -21,6 +22,8 @@ public class CartaoService {
 	
 	public Cartao salvaCartao(Cartao cartao)
 	{   
+		Cliente cliente = clienteService.consultaCliente(cartao.getCliente().getId());
+		cartao.setCliente(cliente);
 		return cartaoRepository.save(cartao);
 	}
 	
