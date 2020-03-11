@@ -2,6 +2,7 @@ package br.com.itau.cartoes.models;
 
 import org.springframework.stereotype.Component;
 
+import br.com.itau.cartoes.dtos.ConsultaClienteResponse;
 import br.com.itau.cartoes.dtos.CreateClienteRequest;
 import br.com.itau.cartoes.dtos.CreateClienteResponse;
 
@@ -21,5 +22,13 @@ public class ClienteMapper
 		clienteCreateReponse.setId(cliente.getId());
 		clienteCreateReponse.setName(cliente.getName());
 		return clienteCreateReponse;
+	}
+	
+	public ConsultaClienteResponse toConsultaClienteResponse(Cliente cliente)
+	{
+		ConsultaClienteResponse clienteConsultaReponse = new ConsultaClienteResponse();
+		clienteConsultaReponse.setId(cliente.getId());
+		clienteConsultaReponse.setName(cliente.getName());
+		return clienteConsultaReponse;
 	}
 }

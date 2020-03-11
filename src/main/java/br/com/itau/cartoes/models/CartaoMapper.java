@@ -2,16 +2,26 @@ package br.com.itau.cartoes.models;
 
 import org.springframework.stereotype.Component;
 
+import br.com.itau.cartoes.dtos.AtivaCartaoRequest;
+import br.com.itau.cartoes.dtos.AtivaCartaoResponse;
+import br.com.itau.cartoes.dtos.ConsultaCartaoResponse;
 import br.com.itau.cartoes.dtos.CreateCartaoRequest;
 import br.com.itau.cartoes.dtos.CreateCartaoResponse;
 
 @Component
 public class CartaoMapper 
 {
-	public Cartao toCartao(CreateCartaoRequest createCartaoRequest)
+	public Cartao fromCreateCartaoRequestToCartao(CreateCartaoRequest createCartaoRequest)
 	{
 		Cartao cartao = new Cartao();
 		cartao.setNumero(createCartaoRequest.getNumero());
+		return cartao;
+	}
+	
+	public Cartao fromAtivaCartaoRequestToCartao(AtivaCartaoRequest ativaCartaoRequest)
+	{
+		Cartao cartao = new Cartao();
+		cartao.setAtivo(ativaCartaoRequest.isAtivo());
 		return cartao;
 	}
 	
@@ -24,4 +34,25 @@ public class CartaoMapper
 		clienteCartaoReponse.setCliente(cartao.getCliente());
 		return clienteCartaoReponse;
 	}
+	
+	public AtivaCartaoResponse toAtivaCartaoResponse(Cartao cartao)
+	{
+		AtivaCartaoResponse ativaCartaoReponse = new AtivaCartaoResponse();
+		ativaCartaoReponse.setId(cartao.getId());
+		ativaCartaoReponse.setNumero(cartao.getNumero());
+		ativaCartaoReponse.setAtivo(cartao.isAtivo());
+		ativaCartaoReponse.setCliente(cartao.getCliente());
+		return ativaCartaoReponse;
+	}
+	
+	public ConsultaCartaoResponse toConsultaCartaoResponse(Cartao cartao)
+	{
+		ConsultaCartaoResponse consultaCartaoReponse = new ConsultaCartaoResponse();
+		consultaCartaoReponse.setId(cartao.getId());
+		consultaCartaoReponse.setNumero(cartao.getNumero());
+		consultaCartaoReponse.setCliente(cartao.getCliente());
+		return consultaCartaoReponse;
+	}
+	
+	
 }
