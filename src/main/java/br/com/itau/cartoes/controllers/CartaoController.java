@@ -50,6 +50,6 @@ public class CartaoController
 	@ResponseStatus(HttpStatus.OK)
 	public ConsultaCartaoResponse consultaCartao(@PathVariable(value="numero") String numero)
 	{
-		return cartaoMapper.toConsultaCartaoResponse(cartaoService.consultaCartao(numero));
+		return cartaoMapper.toConsultaCartaoResponse(cartaoService.consultaCartaoPorNumero(numero));
 	}
 }
