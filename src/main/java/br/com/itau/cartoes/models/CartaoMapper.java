@@ -3,6 +3,7 @@ package br.com.itau.cartoes.models;
 import org.springframework.stereotype.Component;
 
 import br.com.itau.cartoes.dtos.CreateCartaoRequest;
+import br.com.itau.cartoes.dtos.CreateCartaoResponse;
 
 @Component
 public class CartaoMapper 
@@ -14,4 +15,13 @@ public class CartaoMapper
 		return cartao;
 	}
 	
+	public CreateCartaoResponse toCreateCartaoResponse(Cartao cartao)
+	{
+		CreateCartaoResponse clienteCartaoReponse = new CreateCartaoResponse();
+		clienteCartaoReponse.setId(cartao.getId());
+		clienteCartaoReponse.setNumero(cartao.getNumero());
+		clienteCartaoReponse.setAtivo(cartao.isAtivo());
+		clienteCartaoReponse.setCliente(cartao.getCliente());
+		return clienteCartaoReponse;
+	}
 }

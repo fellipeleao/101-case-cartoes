@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.itau.cartoes.dtos.CreateCartaoRequest;
+import br.com.itau.cartoes.dtos.CreateCartaoResponse;
 import br.com.itau.cartoes.models.Cartao;
 import br.com.itau.cartoes.models.CartaoMapper;
-import br.com.itau.cartoes.models.Cliente;
 import br.com.itau.cartoes.services.CartaoService;
 
 @RestController
@@ -31,7 +31,7 @@ public class CartaoController
 	{
 		Cartao cartao = cartaoMapper.toCartao(createCartaoRequest);
 		cartao = cartaoService.salvaCartao(cartao);
-		return cartao;
+		return cartaoMapper.toCreateCartaoResponse(cartao);
 	}
 	
 	@PatchMapping("/{numero}")
