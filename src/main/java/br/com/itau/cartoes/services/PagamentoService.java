@@ -33,6 +33,13 @@ public class PagamentoService
 	
 	public List<Pagamento> consultaPagamentos(int cartaoId)
 	{  
+		Cartao cartao = cartaoService.consultaCartaoPorId(cartaoId);
+		
+		if(!cartao.isAtivo())
+		{
+			throw new CartaoNaoAtivoException();
+		}
+		
 	    List<Pagamento> listaPagamentos = pagamentoRepository.findPagamentoByCartaoId(cartaoId);
         return listaPagamentos;
 	}
